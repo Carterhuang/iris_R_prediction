@@ -1,0 +1,18 @@
+Name: Carter Huang
+
+This is a package for setting up a server for people to make 
+predictions on iris dataset.
+
+Usage:
+
+To deploy, you will need the following librarys:
+	R (3.00 or better)
+	DMwR (data mining library)
+	Rserve(server for R)
+
+	Python (2.7 or better)
+	Flask (web framework)
+	pyRserve(Rserve api in python)
+
+To start the server, do
+	$ sudo ./start_server.sh

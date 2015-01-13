@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h3>Iris Prediction RESTful APT<br>
+Author: Carter Huang<br>
+Email: hh548@cornell.edu</h3>
+<p style="font-size:90%">
+This RESTful API provides ways for users to make predictions based on R iris dataset.<br><br>
+
+<b>Examples:</b><br><br>
+
+To predict <i>Sepal.Length</i> of a data sample:<br>
+curl -i -H "Content-Type: pplication/json" -X POST -d '{ "Sepal.Width" : 5, "Petal.Length" : 5, "Petal.Width" : 5, "Species" : "virginica"}' http://54.94.239.97/iris-predict/api/v1.0/predict<br><br>
+
+To predict <i>Sepal.Width</i> of a data sample:<br>
+curl -i -H "Content-Type: pplication/json" -X POST -d '{ "Sepal.Length" : 5, "Petal.Length" : 5, "Petal.Width" : 5, "Species" : "virginica"}' http://54.94.239.97/iris-predict/api/v1.0/predict<br><br>
+
+To predict <i>Petal.Length</i> of a data sample:<br>
+curl -i -H "Content-Type: pplication/json" -X POST -d '{ "Sepal.Length" : 5, "Sepal.Width" : 5, "Petal.Width" : 5, "Species" : "virginica"}' http://54.94.239.97/iris-predict/api/v1.0/predict<br><br>
+
+To predict <i>Petal.Width</i> of a data sample:<br>
+curl -i -H "Content-Type: pplication/json" -X POST -d '{ "Sepal.Length" : 5, "Sepal.Width" : 5, "Petal.Length" : 5, "Species" : "virginica"}' http://54.94.239.97/iris-predict/api/v1.0/predict<br><br>
+
+To predict <i>Species</i> of a data sample:
+curl -i -H "Content-Type: pplication/json" -X POST -d '{ "Sepal.Length" : 5, "Sepal.Width" : 5, "Petal.Length" : 5, "Petal.Width" : 5}' http://54.94.239.97/iris-predict/api/v1.0/predict<br><br>
+
+<b>Implementation:</b><br><br>
+
+The API is supported by a backend server. The server consists of two parts, a Python HTTP server and R computation models.<br><br>
+
+The Python serving code includes implementation of a main server thread ("server.py") and a R client that connects to R models.<br><br>
+
+As for R, the first model is a weighted k-nearest-neighbor model that predicts the "species" of a data sample based on "Sepal.Length", "Sepal.Width" and so on.<br><br>
+
+The second model is a linear regression model that predicts non-species attributes such as "Sepal.Length", "Sepal.Width", so on and so forth. One thing to notice is that the regression is implemented on the sub-datasets with the same species.
+</p>
+</body>
+</html>
